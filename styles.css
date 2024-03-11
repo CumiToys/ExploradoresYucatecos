@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    overflow: hidden;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(FREDY/Recursos/black_and_white_mayan_doodle_pattern.jpg); /* Ruta de tu imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 48px;
+    color: #8b4513;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block; /* Hacer que el contorno se ajuste al tamaño del texto */
+}
+
+h1::before,
+h1::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+h1::before {
+    -webkit-text-stroke: 2px #8b4513; /* Borde marrón oscuro */
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
+}
+
+h1::after {
+    color: #8b4513;
+    z-index: -2;
+}
+#generateButton {
+    background-color: #8b4513;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#generateButton:hover {
+    background-color: #a0522d;
+}
+
+.random-box {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-image: url(FREDY/Recursos/xibalba-1-1.jpg); /* Ruta de tu imagen para el cuadro del número */
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #8b4513;
+    border-radius: 10px;
+    position: relative;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+#randomNumber {
+    font-size: 72px;
+    margin: 0;
+    color: #8b4513;
+    background-image: url('ruta/de/tu/imagen-numero.jpg'); /* Ruta de tu imagen para el número aleatorio */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 10px;
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
+}
+
+#randomText {
+    font-size: 24px;
+    margin: 0;
+    color: #8b4513;
+    background-color: #fff;
+    border: 4px solid #8b4513;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
