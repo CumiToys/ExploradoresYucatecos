@@ -11,7 +11,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(FREDY/Recursos/black_and_white_mayan_doodle_pattern.jpg); /* Ruta de tu imagen de fondo */
+    background-image: url(img/fondo.jpg); /* Ruta de tu imagen de fondo */
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -76,7 +76,7 @@ h1::after {
     height: 200px;
     margin: 0 auto;
     margin-top: 20px;
-    background-image: url(FREDY/Recursos/xibalba-1-1.jpg); /* Ruta de tu imagen para el cuadro del número */
+    background-image: url(img/2.jpg); /* Ruta de tu imagen para el cuadro del número */
     background-size: cover;
     background-position: center;
     border: 4px solid #8b4513;
