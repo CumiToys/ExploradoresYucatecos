@@ -22,7 +22,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 85vh;
 }
 
 h1 {
@@ -31,6 +31,7 @@ h1 {
 
 h1 {
     text-transform: uppercase;
+    text-align: center;
     font-size: 48px;
     color: #8b4513;
     margin-bottom: 20px;
@@ -71,17 +72,31 @@ h1::after {
     background-color: #a0522d;
 }
 
-.random-box {
-    width: 200px;
-    height: 200px;
+#gameDisplayContainer {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
     margin: 0 auto;
     margin-top: 20px;
+    border: 4px solid #8b4513;
+    border-radius: 10px;
+}
+
+.gameDisplay {
+    width: 100%;
+    height: 100%;
+}
+
+#questionNumberDisplay {
     background-image: url(img/2.jpg); /* Ruta de tu imagen para el cuadro del número */
     background-size: cover;
     background-position: center;
-    border: 4px solid #8b4513;
-    border-radius: 10px;
-    position: relative;
+}
+
+#questionDisplay {
+    background-color: white;
+    border-left: 4px solid #8b4513;
 }
 
 .content {
@@ -93,21 +108,7 @@ h1::after {
     font-size: 72px;
     margin: 0;
     color: #8b4513;
-    background-image: url('ruta/de/tu/imagen-numero.jpg'); /* Ruta de tu imagen para el número aleatorio */
-    background-size: cover;
-    background-position: center;
     padding: 20px;
     border-radius: 10px;
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
-}
-
-#randomText {
-    font-size: 24px;
-    margin: 0;
-    color: #8b4513;
-    background-color: #fff;
-    border: 4px solid #8b4513;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

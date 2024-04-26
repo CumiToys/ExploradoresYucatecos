@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reto Yucateco</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="background-image"></div>
     <div class="container">
         <h1 data-text="RETO YUCATECO">RETO YUCATECO</h1>
         <button id="generateButton">ATRÉVETE A JUGAR</button>
-        <div id="randomBox" class="random-box">
-            <div class="content">
-                <p id="randomNumber">?</p>
-                <p id="randomText">Texto asociado al número</p>
+        <div id="gameDisplayContainer">
+            <div id="questionNumberDisplay" class="gameDisplay">
+                <div class="content">
+                    <p id="randomNumber">?</p>
+                </div>
+            </div>
+            <div id="questionDisplay" class="gameDisplay">
+                <div class="content">
+                    <p id="randomNumber">?</p>
+                </div>
             </div>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
