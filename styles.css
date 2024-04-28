@@ -106,10 +106,10 @@ h1::after {
 }
 
 #questionBox {
-    width: 0;
-    height: 0;
     background-color: white;
     border-left: 4px solid #8b4513;
+    height: 100%;
+    width: 100%;
 }
 
 #questionBox .content {
@@ -121,6 +121,7 @@ h1::after {
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    width: 100%;
 }
 
 #questionText {
@@ -161,16 +162,29 @@ h1::after {
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
 }
 
-.showBox {
+.slide {
     animation: growAnimation 1.5s ease forwards;
 }
 
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in-out forwards;
+}
+
+.fade-away {
+    opacity: 1;
+    animation: fadeAwayAnimation 1s ease-in-out forwards;
+}
+
 .hidden {
+    display: none;
     visibility: hidden;
 }
 
-.show {
+.visible {
+    display: flex;
     visibility: visible;
+    animation: growAnimation 1.5s ease forwards;
 }
 
 /* Ajustes para diferentes tipos de pantalla (tamaño).  */
@@ -192,7 +206,7 @@ h1::after {
     }
 
     #gameButtonBox button {
-        font-size: 16px;
+        font-size: 14px;
         padding: 15px 30px;
     }
 }
@@ -203,7 +217,7 @@ h1::after {
     }
 
     #gameButtonBox button {
-        font-size: 12px;
+        font-size: 10px;
         padding: 12px 20px;
     }
 }
@@ -213,7 +227,7 @@ h1::after {
     h1 {
         font-size: 38px;
     }
-    
+
     #questionNumberBox {
         display: none;
     }
@@ -238,6 +252,16 @@ h1::after {
         font-size: 10px;
         padding: 8px 20px;
     }
+
+    .hidden {
+        opacity: 1;
+        animation: fadeAwayAnimation 1s ease-in-out forwards;
+    }
+
+    .visible {
+        opacity: 0;
+        animation: fadeInAnimation 1s ease-in-out forwards;
+    }
 }
 
 @media only screen and (max-width:425px) {
@@ -258,6 +282,24 @@ h1::after {
         width: 100%;
         height: auto;
         opacity: 1;
+    }
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeAwayAnimation {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
 

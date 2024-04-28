@@ -2,15 +2,17 @@ var loadGameButton = document.getElementById('generateButton');
 loadGameButton.addEventListener('click', loadGame);
 var radioInputs = document.querySelectorAll('.answerOption');
 var answerButton = document.getElementById('answerButton');
+var questionNumberBox = document.getElementById('questionNumberBox');
 var questionBox = document.getElementById('questionBox');
 var questionBoxContent = document.getElementById('questionBoxContent')
 
 function loadGame() {
     generateRandomNumber();
     answerButton.disabled = true;
-    questionBox.classList.add('showBox');
-    loadGameButton.style.display = 'none';
+    questionBox.classList.remove('hidden');
+    questionBox.classList.add('visible');
     questionBoxContent.classList.remove('hidden');
+    questionBoxContent.classList.add('visible');
 }
 
 function generateRandomNumber() {
