@@ -57,22 +57,26 @@ h1::after {
     color: #8b4513;
     z-index: -2;
 }
-#generateButton {
+
+.button {
     background-color: #8b4513;
     color: #fff;
     padding: 15px 30px;
-    font-size: 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-#generateButton:hover {
+.button:hover {
     background-color: #a0522d;
 }
 
-#gameDisplayContainer {
+#generateButton {
+        font-size: 20px;
+}
+
+#gameBoxContainer {
     width: 75%;
     height: 100%;
     display: flex;
@@ -83,25 +87,69 @@ h1::after {
     border-radius: 10px;
 }
 
-.gameDisplay {
+.gameBox {
     width: 100%;
     height: 100%;
 }
 
-#questionNumberDisplay {
+#questionNumberBox {
     background-image: url(img/2.jpg); /* Ruta de tu imagen para el cuadro del número */
     background-size: cover;
     background-position: center;
 }
 
-#questionDisplay {
+#questionNumberBox .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#questionBox {
+    width: 0;
+    height: 0;
     background-color: white;
     border-left: 4px solid #8b4513;
 }
 
-.content {
-    padding: 20px;
-    text-align: center;
+#questionBox .content {
+    font-size: 16px;
+    box-sizing: border-box;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+#questionText {
+    line-height: 1.5;
+    text-align: justify;
+}
+
+#questionResult {
+    visibility: hidden;
+}
+
+#optionBox {
+    width: 100%;
+}
+
+#optionBox label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#optionBox input {
+    margin-right: 5px;
+}
+
+#gameButtonBox {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
 }
 
 #randomNumber {
@@ -112,3 +160,105 @@ h1::after {
     border-radius: 10px;
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
 }
+
+.showBox {
+    animation: growAnimation 1.5s ease forwards;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.show {
+    visibility: visible;
+}
+
+/* Ajustes para diferentes tipos de pantalla (tamaño).  */
+
+@media only screen and (min-width: 2560px) {
+    #questionBox .content {
+        font-size: 40px;
+    }
+
+    #gameButtonBox button {
+        font-size: 40px;
+        padding: 20px 40px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    #questionBox .content {
+        font-size: 16px;
+    }
+
+    #gameButtonBox button {
+        font-size: 16px;
+        padding: 15px 30px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #questionBox .content {
+        font-size: 14px;
+    }
+
+    #gameButtonBox button {
+        font-size: 12px;
+        padding: 12px 20px;
+    }
+}
+
+@media only screen and (max-width:760px) {
+
+    h1 {
+        font-size: 38px;
+    }
+    
+    #questionNumberBox {
+        display: none;
+    }
+
+    #questionBox {
+        border-left: 0;
+    }
+
+    #questionBox .content {
+        font-size: 12px;
+    }
+
+    #gameButtonBox {
+        flex-direction: column;
+    }
+
+    #gameButtonBox button {
+        margin: 5px 0;
+    }
+
+    #gameButtonBox button {
+        font-size: 10px;
+        padding: 8px 20px;
+    }
+}
+
+@media only screen and (max-width:425px) {
+    h1 {
+        font-size: 28px;
+    }
+}
+
+/* Efectos personalizados */
+
+@keyframes growAnimation {
+    from {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        height: auto;
+        opacity: 1;
+    }
+}
+
+

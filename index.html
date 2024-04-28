@@ -12,16 +12,37 @@
     <div class="background-image"></div>
     <div class="container">
         <h1 data-text="RETO YUCATECO">RETO YUCATECO</h1>
-        <button id="generateButton">ATRÉVETE A JUGAR</button>
-        <div id="gameDisplayContainer">
-            <div id="questionNumberDisplay" class="gameDisplay">
+        <button id="generateButton" class="button">ATRÉVETE A JUGAR</button>
+        <div id="gameBoxContainer">
+            <div id="questionNumberBox" class="gameBox">
                 <div class="content">
                     <p id="randomNumber">?</p>
                 </div>
             </div>
-            <div id="questionDisplay" class="gameDisplay">
-                <div class="content">
-                    <p id="randomNumber">?</p>
+            <div id="questionBox" class="gameBox">
+                <div id="questionBoxContent" class="content hidden">
+                    <p id="questionText">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                    </p>
+                    <div id="optionBox">
+                        <p id="questionResult">RESPUESTA</p>
+                        <label>
+                            <input type="radio" name="option" class="answerOption" value="option1"> Option 1
+                        </label><br>
+                        <label>
+                            <input type="radio" name="option" class="answerOption" value="option2"> Option 2
+                        </label><br>
+                        <label>
+                            <input type="radio" name="option" class="answerOption" value="option3"> Option 3
+                        </label><br>
+                        <label>
+                            <input type="radio" name="option" class="answerOption" value="option4"> Option 4
+                        </label><br>
+                    </div>
+                    <div id="gameButtonBox">
+                        <button id="answerButton" class="button">Responder</button>
+                        <button id="nextQuestionButton" class="button">Siguiente pregunta</button>
+                    </div>
                 </div>
             </div>
         </div>
