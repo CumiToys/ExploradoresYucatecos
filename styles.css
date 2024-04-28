@@ -72,7 +72,12 @@ h1::after {
     background-color: #a0522d;
 }
 
-#generateButton {
+.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#startButton {
         font-size: 20px;
 }
 
@@ -92,13 +97,13 @@ h1::after {
     height: 100%;
 }
 
-#questionNumberBox {
+#portraitBox {
     background-image: url(img/2.jpg); /* Ruta de tu imagen para el cuadro del número */
     background-size: cover;
     background-position: center;
 }
 
-#questionNumberBox .content {
+#portraitBox .content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,7 +158,7 @@ h1::after {
     width: 100%;
 }
 
-#randomNumber {
+#questionNumber {
     font-size: 72px;
     margin: 0;
     color: #8b4513;
@@ -228,7 +233,7 @@ h1::after {
         font-size: 38px;
     }
 
-    #questionNumberBox {
+    #portraitBox {
         display: none;
     }
 
