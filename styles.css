@@ -134,10 +134,6 @@ h1::after {
     text-align: justify;
 }
 
-#questionResult {
-    visibility: hidden;
-}
-
 #optionBox {
     width: 100%;
 }

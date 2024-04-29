@@ -1,5 +1,6 @@
 [
     {
+        "number": 1,
         "text": "¿Cuántos municipios conforman el estado de Yucatán?",
         "options": [
             { "value": 1, "text": "a) 106" },
@@ -12,6 +13,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 2,
         "text": "¿Cuál es el nombre del tradicional platillo yucateco que consiste en carne de cerdo marinada en achiote y cocida en hojas de plátano?",
         "options": [
             { "value": 1, "text": "a) Tacos al pastor" },
@@ -24,6 +26,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 3,
         "text": "¿Qué sitio arqueológico maya, ubicado en Yucatán, es considerado una de las Siete Maravillas del Mundo Moderno?",
         "options": [
             { "value": 1, "text": "a) Chichén Itzá" },
@@ -36,6 +39,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 4,
         "text": "¿Cuál de las siguientes zonas arqueológicas no es de Yucatán?",
         "options": [
             { "value": 1, "text": "a) Palenque" },
@@ -48,6 +52,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 5,
         "text": "¿Cuál de los siguientes personajes no es un distinguido yucateco?",
         "options": [
             { "value": 1, "text": "a) Felipe Carrillo Puerto" },
@@ -60,6 +65,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 6,
         "text": "¿Cómo se llaman las sillas tradicionales de Yucatán que fomentan la conversación entre dos personas sentadas una al lado de la otra, pero mirando en direcciones opuestas?",
         "options": [
             { "value": 1, "text": "a) Bancos de Mérida" },
@@ -72,6 +78,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 7,
         "text": "¿Cuál es el nombre de la celebración anual en Yucatán que honra a los difuntos y combina elementos de la tradición maya con el Día de los Muertos?",
         "options": [
             { "value": 1, "text": "a) Hanal Pixán" },
@@ -84,6 +91,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 8,
         "text": "¿Con la carne de qué animal se prepara el Poc Chuc?",
         "options": [
             { "value": 1, "text": "a) Pollo" },
@@ -96,6 +104,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 9,
         "text": "¿Cuál es la fecha de fundación de la Ciudad de Mérida?",
         "options": [
             { "value": 1, "text": "a) 12 de octubre de 1492" },
@@ -108,6 +117,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 10,
         "text": "¿Cuál era la base de la economía de intercambio de la civilización Maya?",
         "options": [
             { "value": 1, "text": "a) El trueque" },
@@ -120,6 +130,7 @@
         "wrongAnswerOutput": "¡INCORRECTO!"
     },
     {
+        "number": 11,
         "text": "¿Cuál era el nombre del libro sagrado de los mayas, compuesto de una serie de códices?",
         "options": [
             { "value": 1, "text": "a) Popol Vuh" },
@@ -132,6 +143,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 3 casillas"
     },
     {
+        "number": 12,
         "text": "¿Qué dios maya era representado como una serpiente emplumada y asociado con el conocimiento y la sabiduría?",
         "options": [
             { "value": 1, "text": "a) Kukulkán" },
@@ -144,6 +156,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 2 casillas"
     },
     {
+        "number": 13,
         "text": "¿Cuál era el nombre del dios creador en la mitología maya, considerado el señor del cielo y la fertilidad?",
         "options": [
             { "value": 1, "text": "a) Kukulkán" },
@@ -156,6 +169,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 2 casillas"
     },
     {
+        "number": 14,
         "text": "¿Qué significa la palabra \"Xibalbá\" en lengua maya?",
         "options": [
             { "value": 1, "text": "a) Tierra de los vivos" },
@@ -168,6 +182,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 3 casillas"
     },
     {
+        "number": 15,
         "text": "¿Qué importante industria impulsó el crecimiento económico de Yucatán a finales del siglo XIX y principios del siglo XX?",
         "options": [
             { "value": 1, "text": "a) La industria textil" },
@@ -180,6 +195,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 1 casilla"
     },
     {
+        "number": 16,
         "text": "¿Cuál era el nombre del árbol sagrado para los antiguos mayas, considerado como el centro del universo y la conexión entre el mundo terrenal y el inframundo?",
         "options": [
             { "value": 1, "text": "a) Ceiba" },
@@ -192,6 +208,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 1 casilla"
     },
     {
+        "number": 17,
         "text": "¿Cómo se llaman los seres mitológicos de la cultura maya que son similares a duendes y habitan en la naturaleza?",
         "options": [
             { "value": 1, "text": "a) Aluxes" },
@@ -204,6 +221,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 2 casillas"
     },
     {
+        "number": 18,
         "text": "¿Qué ser mitológico femenino de la cultura yucateca se caracteriza por su belleza seductora y su presencia en los campos de maíz?",
         "options": [
             { "value": 1, "text": "a) El Nahual" },
@@ -216,6 +234,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 1 casilla"
     },
     {
+        "number": 19,
         "text": "¿Cuál es el nombre del vestido típico que usan las mujeres yucatecas, caracterizado por su tela ligera y sus bordados coloridos?",
         "options": [
             { "value": 1, "text": "a) Guayabera" },
@@ -228,6 +247,7 @@
         "wrongAnswerOutput": "¡INCORRECTO! Retrocede 3 casillas"
     },
     {
+        "number": 20,
         "text": "¿Cuál es el nombre del famoso cantautor yucateco conocido como \"Rey del Romanticismo\"?",
         "options": [
             { "value": 1, "text": "a) Armando Manzanero" },
