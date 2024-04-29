@@ -2,25 +2,26 @@ var loadGameButton = document.getElementById('startButton');
 loadGameButton.addEventListener('click', loadGame);
 
 var quizz = [];
-var number = 0;
 
 async function loadGame() {
     setActionEvents();
     await loadData();
-    randomNumber = generateRandomNumber(quizz.length);
     displayQuestionBox();
+    loadNextQuestion();
     showContent();
-    loadQuestion(randomNumber);
 }
 
 function setActionEvents() {
     var radioInputs = document.querySelectorAll('.answerOption');
+    var nextQuestionButton = document.getElementById('nextQuestionButton'); 
 
     radioInputs.forEach(function(radio) {
         radio.addEventListener('change', function() {
             handleOptionChange(this);
         });
     });
+
+    nextQuestionButton.addEventListener('click', loadNextQuestion);
 }
 
 function displayQuestionBox() {
@@ -37,13 +38,18 @@ function showContent() {
     questionBoxContent.classList.add('visible');
 }
 
+function loadNextQuestion() {
+    var randomNumber = generateRandomNumber(quizz.length);
+    loadQuestion(randomNumber);
+}
+
 function loadQuestion(questionNumber) {
     var questionBoxContent = document.getElementById('questionBoxContent')
     var answerButton = document.getElementById('answerButton');
 
+    answerButton.disabled = true;
     questionBoxContent.classList.add('fade-away');
     fillContent(questionBoxContent, questionNumber);
-    answerButton.disabled = true;
     questionBoxContent.classList.add('fade-in');
 }
 
@@ -57,6 +63,7 @@ function fillContent(content, questionNumber) {
     questionText.textContent = quizz[questionNumber].text;
     options.forEach((option, index) => {
         var questionOption = quizz[questionNumber].options[index];
+        option.checked = false;
         option.value = questionOption.value;
         option.nextSibling.nodeValue = questionOption.text;
     });
