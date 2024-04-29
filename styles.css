@@ -234,9 +234,6 @@ h1::after {
 
     #questionBox {
         border-left: 0;
-        display: flex;
-        visibility: visible;
-        background-image: url(img/2.jpg);
     }
 
     #questionBox .content {
