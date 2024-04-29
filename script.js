@@ -1,11 +1,13 @@
-var loadGameButton = document.getElementById('startButton');
-loadGameButton.addEventListener('click', loadGame);
+var startGameButton = document.getElementById('startButton');
+startGameButton.addEventListener('click', loadGame);
 
 const SESSION_KEY = 'quizzData';
 var questionAnswered = false;
 var currentQuestionIndex = 0;
 
 async function loadGame() {
+    setupReloadButton();
+
     if(!sessionHasKey(SESSION_KEY)) {
         saveSessionData(await loadDataFromFile());
     }
@@ -17,6 +19,18 @@ async function loadGame() {
     show(questionBox);
     loadNextQuestion();
     show(questionBoxContent);
+}
+
+async function reloadGame() {
+    saveSessionData(await loadDataFromFile());
+    loadNextQuestion();
+}
+
+function setupReloadButton() {
+    startGameButton.textContent = 'REINICIAR JUEGO';
+
+    startGameButton.removeEventListener('click', loadGame);
+    startGameButton.addEventListener('click', reloadGame);
 }
 
 function setActionEvents() {

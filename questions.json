@@ -3,7 +3,7 @@
         "number": 1,
         "text": "¿Cuántos municipios conforman el estado de Yucatán?",
         "options": [
-            { "value": 1, "text": "a) 106" },
+            { "value": 1, "text": "a) 186" },
             { "value": 2, "text": "b) 86" },
             { "value": 3, "text": "c) 106" },
             { "value": 4, "text": "d) 69" }
