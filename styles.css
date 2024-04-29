@@ -185,7 +185,6 @@ h1::after {
 .visible {
     display: flex;
     visibility: visible;
-    animation: growAnimation 1.5s ease forwards;
 }
 
 /* Ajustes para diferentes tipos de pantalla (tamaño).  */
@@ -235,6 +234,9 @@ h1::after {
 
     #questionBox {
         border-left: 0;
+        display: flex;
+        visibility: visible;
+        background-image: url(img/2.jpg);
     }
 
     #questionBox .content {
@@ -252,16 +254,6 @@ h1::after {
     #gameButtonBox button {
         font-size: 10px;
         padding: 8px 20px;
-    }
-
-    .hidden {
-        opacity: 1;
-        animation: fadeAwayAnimation 1s ease-in-out forwards;
-    }
-
-    .visible {
-        opacity: 0;
-        animation: fadeInAnimation 1s ease-in-out forwards;
     }
 }
 

@@ -1,11 +1,13 @@
 var loadGameButton = document.getElementById('startButton');
 loadGameButton.addEventListener('click', loadGame);
 
-var quizz = [];
+const SESSION_KEY = 'quizzData';
 var questionAnswered = false;
 
 async function loadGame() {
-    await loadData();
+    if(!sessionHasKey(SESSION_KEY)) {
+        saveSessionData(await loadDataFromFile());
+    }
     setActionEvents();
     displayQuestionBox();
     loadNextQuestion();
@@ -38,6 +40,7 @@ function showContent() {
 }
 
 function loadNextQuestion() {
+    var quizz = getSessionData(SESSION_KEY);
     if (questionAnswered) {
         resetSettings();
         questionAnswered = false;
@@ -70,6 +73,7 @@ function loadQuestion(questionNumber) {
 }
 
 function fillContent(content, questionNumber) {
+    var quizz = getSessionData(SESSION_KEY);
     var portraitBox = document.getElementById('questionNumber');
     var questionText = content.querySelector('#questionText');
     var options = content.querySelectorAll('.answerOption');
@@ -86,6 +90,7 @@ function fillContent(content, questionNumber) {
 }
 
 function checkAnswer() {
+    var quizz = getSessionData(SESSION_KEY);
     var questionBox = document.getElementById('questionBox');
     var selectedOption = document.querySelector('input[class="answerOption"]:checked');
     var questionNumber = document.getElementById('questionNumber').textContent;
@@ -99,6 +104,7 @@ function checkAnswer() {
         setBackgroundColor(questionBox, '#b0f9de');
         questionResult = setQuestionResult(question.rightAnswerOutput, '#18ba69');
         quizz.splice(questionNumber - 1, 1);
+        saveSessionData(quizz);
     } else {
         setBackgroundColor(questionBox, '#f3aaaa');
         questionResult = setQuestionResult(question.wrongAnswerOutput, '#c42b2b');
@@ -166,15 +172,30 @@ function enableMany(elements) {
     });
 }
 
-async function loadData() {
+async function loadDataFromFile() {
     try {
-        const response = await fetch('questions.json');
-        if (!response.ok) {
+        const data = await fetch('questions.json');
+        if (!data.ok) {
           throw new Error('File Not Found');
         }
-        quizz = await response.json();
-        return quizz;
+        return await data.json();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+}
+
+function saveSessionData(data) {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+}
+
+function getSessionData(data) {
+   return JSON.parse(sessionStorage.getItem(SESSION_KEY));
+}
+
+function clearSessionData(data) {
+    sessionStorage.clear();
+}
+
+function sessionHasKey(key) {
+    return sessionStorage.getItem(key) !== null;
 }
