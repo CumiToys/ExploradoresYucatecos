@@ -3,15 +3,20 @@ loadGameButton.addEventListener('click', loadGame);
 
 const SESSION_KEY = 'quizzData';
 var questionAnswered = false;
+var currentQuestionIndex = 0;
 
 async function loadGame() {
     if(!sessionHasKey(SESSION_KEY)) {
         saveSessionData(await loadDataFromFile());
     }
+
+    var questionBox = document.getElementById('questionBox');
+    var questionBoxContent = document.getElementById('questionBoxContent');
+
     setActionEvents();
-    displayQuestionBox();
+    show(questionBox);
     loadNextQuestion();
-    showContent();
+    show(questionBoxContent);
 }
 
 function setActionEvents() {
@@ -29,18 +34,10 @@ function setActionEvents() {
     answerButton.addEventListener('click', checkAnswer);
 }
 
-function displayQuestionBox() {
-    var questionBox = document.getElementById('questionBox');
-    show(questionBox);
-}
-
-function showContent() {
-    var questionBoxContent = document.getElementById('questionBoxContent')
-    show(questionBoxContent);
-}
-
 function loadNextQuestion() {
     var quizz = getSessionData(SESSION_KEY);
+    var questionBoxContent = document.getElementById('questionBoxContent')
+    
     if (questionAnswered) {
         resetSettings();
         questionAnswered = false;
@@ -48,7 +45,7 @@ function loadNextQuestion() {
     
     if (quizz.length > 0) {
         var randomNumber = generateRandomNumber(quizz.length);
-        loadQuestion(randomNumber);
+        fillQuestionContent(questionBoxContent, randomNumber);
     } else {
         console.log('game over!');
     }
@@ -57,22 +54,16 @@ function loadNextQuestion() {
 function resetSettings() {
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
+    var answerButton = document.getElementById('answerButton');
 
     var questionResult = setQuestionResult('', 'white');
     hide(questionResult);
     setBackgroundColor(questionBox, 'white');
     enableMany(radioInputs);
-}
-
-function loadQuestion(questionNumber) {
-    var questionBoxContent = document.getElementById('questionBoxContent')
-    var answerButton = document.getElementById('answerButton');
-
     disable(answerButton);
-    fillContent(questionBoxContent, questionNumber);
 }
 
-function fillContent(content, questionNumber) {
+function fillQuestionContent(content, questionNumber) {
     var quizz = getSessionData(SESSION_KEY);
     var portraitBox = document.getElementById('questionNumber');
     var questionText = content.querySelector('#questionText');
