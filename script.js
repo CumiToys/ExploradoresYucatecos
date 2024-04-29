@@ -24,6 +24,7 @@ async function loadGame() {
 async function reloadGame() {
     saveSessionData(await loadDataFromFile());
     loadNextQuestion();
+    showPopup();
 }
 
 function setupReloadButton() {
@@ -203,4 +204,26 @@ function clearSessionData(data) {
 
 function sessionHasKey(key) {
     return sessionStorage.getItem(key) !== null;
+}
+
+function showPopup() {
+    var popupContainer = document.createElement("div");
+    popupContainer.className = "popup-container";
+    
+    popupContainer.innerHTML = "<p>Juego reiniciado exitosamente</p>";
+
+    document.body.appendChild(popupContainer);
+
+    function showPopup() {
+        popupContainer.classList.add("fade-in");
+        popupContainer.style.display = "block";
+    }
+
+    function removePopup() {
+        document.body.removeChild(popupContainer);
+    }
+
+    showPopup();
+
+    setTimeout(removePopup, 5000);
 }
