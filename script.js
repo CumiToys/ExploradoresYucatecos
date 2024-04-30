@@ -66,8 +66,8 @@ function loadNextQuestion() {
     }
     
     if (quizz.length > 0) {
-        var randomNumber = generateRandomNumber(quizz.length);
-        fillQuestionContent(questionBoxContent, randomNumber);
+        currentQuestionIndex = generateRandomNumber(quizz.length);
+        fillQuestionContent(questionBoxContent, currentQuestionIndex);
         disable(answerButton);
     } else {
         console.log('game over!');
@@ -84,15 +84,14 @@ function resetSettings() {
     enableMany(radioInputs);
 }
 
-function fillQuestionContent(content, questionNumber) {
+function fillQuestionContent(content, questionIndex) {
     var quizz = getSessionData(SESSION_KEY);
-    var question = quizz[questionNumber];
-    var portraitBox = document.getElementById('questionNumber');
+    var question = quizz[questionIndex];
+    var questionNumberBox = document.getElementById('questionNumber');
     var questionText = content.querySelector('#questionText');
     var options = content.querySelectorAll('.answerOption');
 
-    portraitBox.textContent = questionNumber + 1;
-    
+    questionNumberBox.textContent = question.number;
     questionText.textContent = `${question.number}. ${question.text}`;
     options.forEach((option, index) => {
         option.checked = false;
@@ -106,8 +105,7 @@ function checkAnswer() {
     var quizz = getSessionData(SESSION_KEY);
     var questionBox = document.getElementById('questionBox');
     var selectedOption = document.querySelector('input[class="answerOption"]:checked');
-    var questionNumber = document.getElementById('questionNumber').textContent;
-    var question = quizz[questionNumber - 1];
+    var question = quizz[currentQuestionIndex];
     var questionResult;
 
     questionAnswered = true;
@@ -116,7 +114,7 @@ function checkAnswer() {
     if(selectedOption.value == question.rightAnswer){
         setBackgroundColor(questionBox, '#b0f9de');
         questionResult = setQuestionResult(question.rightAnswerOutput, '#18ba69');
-        quizz.splice(questionNumber - 1, 1);        // Elimina la pregunta del array.
+        quizz.splice(currentQuestionIndex, 1);        // Elimina la pregunta del array.
         saveSessionData(SESSION_KEY, quizz);
     } else {
         setBackgroundColor(questionBox, '#f3aaaa');
