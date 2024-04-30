@@ -189,7 +189,7 @@ h1::after {
 
 .fade-away {
     opacity: 1;
-    animation: fadeAwayAnimation 1s ease-in-out forwards;
+    animation: fadeAwayAnimation 1.5s ease-in-out forwards;
 }
 
 .animation {

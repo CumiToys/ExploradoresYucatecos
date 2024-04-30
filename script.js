@@ -56,7 +56,8 @@ function setActionEvents() {
 
 function loadNextQuestion() {
     var quizz = getSessionData(SESSION_KEY);
-    var questionBoxContent = document.getElementById('questionBoxContent')
+    var questionBoxContent = document.getElementById('questionBoxContent');
+    var answerButton = document.getElementById('answerButton');
     
     if (questionAnswered) {
         resetSettings();
@@ -71,6 +72,7 @@ function loadNextQuestion() {
         fillQuestionContent(questionBoxContent, randomNumber);
         questionBoxContent.classList.remove('fade-away');
         questionBoxContent.classList.add('fade-in');
+        disable(answerButton);
     } else {
         console.log('game over!');
     }
@@ -79,13 +81,11 @@ function loadNextQuestion() {
 function resetSettings() {
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
-    var answerButton = document.getElementById('answerButton');
 
     var questionResult = setQuestionResult('', 'white');
     hide(questionResult);
     setBackgroundColor(questionBox, 'white');
     enableMany(radioInputs);
-    disable(answerButton);
 }
 
 function fillQuestionContent(content, questionNumber) {
