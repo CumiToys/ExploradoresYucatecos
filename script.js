@@ -1,4 +1,5 @@
 var startGameButton = document.getElementById('startButton');
+var questionBox = document.getElementById('questionBox');
 startGameButton.addEventListener('click', loadGame);
 
 const SESSION_KEY = 'quizzData';
@@ -20,6 +21,10 @@ async function loadGame() {
     loadNextQuestion();
     show(questionBoxContent);
 }
+
+questionBox.addEventListener('animationend', function() {
+    questionBox.classList.remove('animation');
+});
 
 async function reloadGame() {
     saveSessionData(await loadDataFromFile());
@@ -60,7 +65,12 @@ function loadNextQuestion() {
     
     if (quizz.length > 0) {
         var randomNumber = generateRandomNumber(quizz.length);
+
+        questionBoxContent.classList.remove('fade-in');
+        questionBoxContent.classList.add('fade-away');
         fillQuestionContent(questionBoxContent, randomNumber);
+        questionBoxContent.classList.remove('fade-away');
+        questionBoxContent.classList.add('fade-in');
     } else {
         console.log('game over!');
     }
@@ -80,18 +90,19 @@ function resetSettings() {
 
 function fillQuestionContent(content, questionNumber) {
     var quizz = getSessionData(SESSION_KEY);
+    var question = quizz[questionNumber];
     var portraitBox = document.getElementById('questionNumber');
     var questionText = content.querySelector('#questionText');
     var options = content.querySelectorAll('.answerOption');
 
     portraitBox.textContent = questionNumber + 1;
     
-    questionText.textContent = quizz[questionNumber].text;
+    questionText.textContent = `${question.number}. ${question.text}`;
     options.forEach((option, index) => {
-        var questionOption = quizz[questionNumber].options[index];
+        var questionOption = question.options[index];
         option.checked = false;
         option.value = questionOption.value;
-        option.nextSibling.nodeValue = questionOption.text;
+        option.nextSibling.nodeValue = questionOption.text; // Modifica el label text sin sobreescribir el radio input anidado.
     });
 }
 
@@ -210,7 +221,7 @@ function showPopup() {
     var popupContainer = document.createElement("div");
     popupContainer.className = "popup-container";
     
-    popupContainer.innerHTML = "<p>Juego reiniciado exitosamente</p>";
+    popupContainer.innerHTML = "<p>Juego reiniciado exitósamente</p>";
 
     document.body.appendChild(popupContainer);
 

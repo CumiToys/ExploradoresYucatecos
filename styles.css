@@ -159,6 +159,10 @@ h1::after {
     margin-right: 5px;
 }
 
+#optionBox label:hover {
+    cursor: pointer;
+}
+
 #gameButtonBox {
     display: flex;
     justify-content: space-around;
@@ -180,12 +184,16 @@ h1::after {
 
 .fade-in {
     opacity: 0;
-    animation: fadeInAnimation 1s ease-in-out forwards;
+    animation: fadeInAnimation 1.5s ease-in-out forwards;
 }
 
 .fade-away {
     opacity: 1;
     animation: fadeAwayAnimation 1s ease-in-out forwards;
+}
+
+.animation {
+    animation: growAnimation 1.5s ease forwards;
 }
 
 .hidden {
@@ -237,6 +245,10 @@ h1::after {
 
     h1 {
         font-size: 38px;
+    }
+
+    .animation {
+        animation: fadeInAnimation 1s ease-in-out forwards;
     }
 
     #portraitBox {
