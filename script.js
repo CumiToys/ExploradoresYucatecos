@@ -22,7 +22,7 @@ async function loadGame() {
 }
 
 async function reloadGame() {
-    saveSessionData(SESSION_KEY, await loadDataFromFile());
+    saveSessionData(SESSION_KEY, await loadDataFromFile('questions.json'));
     loadNextQuestion();
     showPopup();
 }
@@ -42,6 +42,7 @@ function setActionEvents() {
 
     questionBox.addEventListener('animationend', function() {
         questionBox.classList.remove('animation');
+        questionBox.style.backgroundImage = 'none';
     });
 
     radioInputs.forEach(function(radio) {
