@@ -1,5 +1,4 @@
 var startGameButton = document.getElementById('startButton');
-var questionBox = document.getElementById('questionBox');
 startGameButton.addEventListener('click', loadGame);
 
 const SESSION_KEY = 'quizzData';
@@ -10,7 +9,7 @@ async function loadGame() {
     setupReloadButton();
 
     if(!sessionHasKey(SESSION_KEY)) {
-        saveSessionData(await loadDataFromFile());
+        saveSessionData(SESSION_KEY, await loadDataFromFile('questions.json'));
     }
 
     var questionBox = document.getElementById('questionBox');
@@ -22,27 +21,28 @@ async function loadGame() {
     show(questionBoxContent);
 }
 
-questionBox.addEventListener('animationend', function() {
-    questionBox.classList.remove('animation');
-});
-
 async function reloadGame() {
-    saveSessionData(await loadDataFromFile());
+    saveSessionData(SESSION_KEY, await loadDataFromFile());
     loadNextQuestion();
     showPopup();
 }
 
 function setupReloadButton() {
-    startGameButton.textContent = 'REINICIAR JUEGO';
-
     startGameButton.removeEventListener('click', loadGame);
     startGameButton.addEventListener('click', reloadGame);
+
+    startGameButton.textContent = 'REINICIAR JUEGO';
 }
 
 function setActionEvents() {
+    var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
     var nextQuestionButton = document.getElementById('nextQuestionButton');
     var answerButton = document.getElementById('answerButton');
+
+    questionBox.addEventListener('animationend', function() {
+        questionBox.classList.remove('animation');
+    });
 
     radioInputs.forEach(function(radio) {
         radio.addEventListener('change', function() {
@@ -66,12 +66,7 @@ function loadNextQuestion() {
     
     if (quizz.length > 0) {
         var randomNumber = generateRandomNumber(quizz.length);
-
-        questionBoxContent.classList.remove('fade-in');
-        questionBoxContent.classList.add('fade-away');
         fillQuestionContent(questionBoxContent, randomNumber);
-        questionBoxContent.classList.remove('fade-away');
-        questionBoxContent.classList.add('fade-in');
         disable(answerButton);
     } else {
         console.log('game over!');
@@ -82,9 +77,9 @@ function resetSettings() {
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
 
+    setBackgroundColor(questionBox, 'white');
     var questionResult = setQuestionResult('', 'white');
     hide(questionResult);
-    setBackgroundColor(questionBox, 'white');
     enableMany(radioInputs);
 }
 
@@ -99,8 +94,8 @@ function fillQuestionContent(content, questionNumber) {
     
     questionText.textContent = `${question.number}. ${question.text}`;
     options.forEach((option, index) => {
-        var questionOption = question.options[index];
         option.checked = false;
+        var questionOption = question.options[index];
         option.value = questionOption.value;
         option.nextSibling.nodeValue = questionOption.text; // Modifica el label text sin sobreescribir el radio input anidado.
     });
@@ -120,8 +115,8 @@ function checkAnswer() {
     if(selectedOption.value == question.rightAnswer){
         setBackgroundColor(questionBox, '#b0f9de');
         questionResult = setQuestionResult(question.rightAnswerOutput, '#18ba69');
-        quizz.splice(questionNumber - 1, 1);
-        saveSessionData(quizz);
+        quizz.splice(questionNumber - 1, 1);        // Elimina la pregunta del array.
+        saveSessionData(SESSION_KEY, quizz);
     } else {
         setBackgroundColor(questionBox, '#f3aaaa');
         questionResult = setQuestionResult(question.wrongAnswerOutput, '#c42b2b');
@@ -133,7 +128,7 @@ function checkAnswer() {
 function setQuestionResult(result, color) {
     var questionResult = document.getElementById('questionResult');
 
-    questionResult.textContent = result;
+    questionResult.innerHTML = result;
     questionResult.style.color = color;
     return questionResult;
 }
@@ -189,9 +184,9 @@ function enableMany(elements) {
     });
 }
 
-async function loadDataFromFile() {
+async function loadDataFromFile(filename) {
     try {
-        const data = await fetch('questions.json');
+        const data = await fetch(filename);
         if (!data.ok) {
           throw new Error('File Not Found');
         }
@@ -201,15 +196,15 @@ async function loadDataFromFile() {
       }
 }
 
-function saveSessionData(data) {
-    sessionStorage.setItem(SESSION_KEY, JSON.stringify(data));
+function saveSessionData(key, data) {
+    sessionStorage.setItem(key, JSON.stringify(data));
 }
 
-function getSessionData(data) {
-   return JSON.parse(sessionStorage.getItem(SESSION_KEY));
+function getSessionData(key) {
+   return JSON.parse(sessionStorage.getItem(key));
 }
 
-function clearSessionData(data) {
+function clearSessionData() {
     sessionStorage.clear();
 }
 
