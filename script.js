@@ -4,6 +4,7 @@ startGameButton.addEventListener('click', loadGame);
 const SESSION_KEY = 'quizzData';
 var questionAnswered = false;
 var currentQuestionIndex = 0;
+var isGameOver = false;
 
 async function loadGame() {
     setupReloadButton();
@@ -22,9 +23,56 @@ async function loadGame() {
 }
 
 async function reloadGame() {
+    if (isGameOver) {
+        setupNormalGameLayout();
+        isGameOver = false;
+    }
+
     saveSessionData(SESSION_KEY, await loadDataFromFile('questions.json'));
     loadNextQuestion();
     showPopup();
+}
+
+function gameOver() {
+    setupGameOverLayout();
+    isGameOver = true;
+}
+
+function setupGameOverLayout() {
+    var questionBoxContent = document.getElementById('questionBoxContent');
+    var gameOverText = document.createElement('h1');
+    gameOverText.textContent = '¡Fin del juego!';
+    gameOverText.id = 'gameOverText';
+    var reloadButton = document.createElement('button');
+    reloadButton.className = 'button';
+    reloadButton.id = 'reloadButton';
+    reloadButton.textContent = 'REINICIAR JUEGO';
+
+    reloadButton.addEventListener('click', reloadGame);
+
+    questionBoxContent.childNodes.forEach(child => {
+        if(child.nodeType === 1) {
+            hide(child);
+        }
+    });
+
+    questionBoxContent.appendChild(gameOverText);
+    questionBoxContent.appendChild(reloadButton);
+}
+
+function setupNormalGameLayout() {
+    var questionBoxContent = document.getElementById('questionBoxContent');
+    var gameOverText = document.getElementById('gameOverText');
+    var reloadButton = document.getElementById('reloadButton');
+
+    questionBoxContent.removeChild(reloadButton);
+    questionBoxContent.removeChild(gameOverText);
+
+        questionBoxContent.childNodes.forEach(child => {
+        if(child.nodeType === 1) {
+            show(child);
+        }
+    });
 }
 
 function setupReloadButton() {
@@ -61,7 +109,7 @@ function loadNextQuestion() {
     var answerButton = document.getElementById('answerButton');
     
     if (questionAnswered) {
-        resetSettings();
+        resetResultSettings();
         questionAnswered = false;
     }
     
@@ -70,11 +118,11 @@ function loadNextQuestion() {
         fillQuestionContent(questionBoxContent, currentQuestionIndex);
         disable(answerButton);
     } else {
-        console.log('game over!');
+        gameOver();
     }
 }
 
-function resetSettings() {
+function resetResultSettings() {
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
 

@@ -165,7 +165,7 @@ h1::after {
 
 #gameButtonBox {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -203,6 +203,7 @@ h1::after {
 
 .visible {
     display: flex;
+    flex-direction: column;
     visibility: visible;
 }
 
