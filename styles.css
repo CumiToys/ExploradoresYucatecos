@@ -258,6 +258,7 @@ h1::after {
 
     #gameBoxContainer {
         background-image: url(img/portrait.jpg);
+        background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
