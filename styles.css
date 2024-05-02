@@ -4,7 +4,8 @@ body {
     font-family: "Averia Serif Libre", serif;
     font-weight: 300;
     font-style: normal;
-    background-image: url(img/background.jpg); /* Ruta de tu imagen de fondo */
+    background-image: url(img/chichen.jpg); /* Ruta de tu imagen de fondo */
+    background-position: center;
     background-size: cover;
 }
 
