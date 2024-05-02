@@ -1,18 +1,32 @@
-var startGameButton = document.getElementById('startButton');
-startGameButton.addEventListener('click', loadGame);
+setActionEvents();
 
 var currentQuestionIndex = 0;
 var quizz = [];
+
+function setActionEvents() {
+    var startGameButton = document.getElementById('startButton');
+    var radioInputs = document.querySelectorAll('.answerOption');
+
+    startGameButton.addEventListener('click', loadGame);
+
+    radioInputs.forEach(function(radio) {
+        radio.addEventListener('click', function() {
+            handleOptionChange(this);
+        });
+    });
+}
 
 async function loadGame() {
     if(quizz.length == 0) {
         quizz = await loadDataFromFile('questions.json');
     }
+    var startGameButton = document.getElementById('startButton');
+    var portrait = document.getElementById('portrait');
     var questionBox = document.getElementById('questionBox');
     var questionBoxContent = document.getElementById('questionBoxContent');
 
     hide(startGameButton);
-    setActionEvents();
+    hide(portrait);
     show(questionBox);
     loadQuestion();
     show(questionBoxContent);
@@ -21,16 +35,6 @@ async function loadGame() {
 async function reloadGame() {
     removePopup();
     resetSettings();
-}
-
-function setActionEvents() {
-    var radioInputs = document.querySelectorAll('.answerOption');
-
-    radioInputs.forEach(function(radio) {
-        radio.addEventListener('click', function() {
-            handleOptionChange(this);
-        });
-    });
 }
 
 function handleOptionChange(radio) {
@@ -50,6 +54,8 @@ function generateRandomNumber(maxValue) {
 }
 
 function resetSettings() {
+    var portrait = document.getElementById('portrait');
+    var startGameButton = document.getElementById('startButton');
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
     var selectedOption = document.querySelector('input[class="answerOption"]:checked');
@@ -59,6 +65,7 @@ function resetSettings() {
     setBackgroundColor(label, 'white');
     setTextColor(label, 'black');
     enableMany(radioInputs);
+    show(portrait);
     show(startGameButton);
 }
 
@@ -79,18 +86,21 @@ function fillQuestionContent(content, questionIndex) {
 function checkAnswer(selectedOption) {
     var question = quizz[currentQuestionIndex];
     var label = selectedOption.parentNode;
+    var popup;
 
     lockAnswer();
 
     if(selectedOption.value == question.rightAnswer){
         setBackgroundColor(label, '#0EB81B');
         setTextColor(label, 'white');
-        showPopup(question.rightAnswerOutput);
+        popup = setPopupContent(question.rightAnswerOutput, 'rgb(14,184,27, 0.9)');
     } else {
         setBackgroundColor(label, '#B80E0E');
         setTextColor(label, 'white');
-        showPopup(question.wrongAnswerOutput);
+        popup = setPopupContent(question.wrongAnswerOutput, 'rgb(184,14,14, 0.9)');
     }
+
+    show(popup);
 
 }
 
@@ -158,28 +168,25 @@ async function loadDataFromFile(filename) {
       }
 }
 
-function showPopup(text) {
+function setPopupContent(text, color) {
     var popupContainer = document.createElement("div");
     popupContainer.className = "popup-container";
     var reloadButton = document.createElement("button");
+    reloadButton.id = 'reloadButton';
     reloadButton.innerHTML = `<span class=reload>&#x21bb;</span> Volver al inicio`;
     reloadButton.addEventListener('click', reloadGame);
     
     popupContainer.innerHTML = `<p>${text}</p>`;
     popupContainer.appendChild(reloadButton);
+    setBackgroundColor(popupContainer, color)
 
     document.body.appendChild(popupContainer);
 
-    popupContainer.classList.add("fade-in");
-    popupContainer.style.display = "block";
+    return popupContainer;
 }
 
 function removePopup() {
-    var popupContainers = document.querySelectorAll('.popup-container');
+    var popupContainer = document.querySelector('.popup-container');
 
-    console.log(popupContainers.length);
-
-    popupContainers.forEach(popup => {
-        document.body.removeChild(popup);
-    });
+    document.body.removeChild(popupContainer);
 }
