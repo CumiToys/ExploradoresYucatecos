@@ -9,25 +9,24 @@ body {
     background-size: cover;
 }
 
-.navbar {
-    text-align: center;
-}
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 80vh;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.navbar {
+    text-align: center;
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 28px;
     -webkit-text-stroke: 2px #8b4513; /* Borde marrón oscuro */
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
     color: #8b4513;
-    position: sticky;
-    margin: 0 auto;
+    margin: 15px auto;
     display: inline-block; /* Hacer que el contorno se ajuste al tamaño del texto */
 }
 
@@ -49,6 +48,7 @@ h1 {
     background: transparent;
     border: none;
     border-radius: 8px;
+    font-size: 20px;
     color: white;
     letter-spacing: 1px;
 }
@@ -74,8 +74,7 @@ button:hover {
 }
 
 #questionBox {
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 100%;
+    height: 60%;
     width: 100%;
 }
 
@@ -84,12 +83,12 @@ button:hover {
     justify-content: center;
     box-sizing: border-box;
     padding: 0.5rem;
-    height: 100%;
+    height: 80%;
     width: 100%;
 }
 
 #questionText {
-    font-size: 16px;
+    font-size: 20px;
     line-height: 1.5;
     text-align: justify;
     background-color: white;
@@ -100,10 +99,13 @@ button:hover {
 
 #optionBox {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #optionBox label {
-    font-size: 16px;
+    font-size: 20px;
     display: flex;
     box-sizing: border-box;
     background-color: white;
@@ -129,16 +131,8 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-#questionNumber {
-    font-size: 72px;
-    margin: 0;
-    color: #8b4513;
-    padding: 20px;
-    border-radius: 10px;
-    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
-}
-
 .popup-container {
+    font-size: 25px;
     position: fixed;
     text-align: center;
     border-radius: 10px;
@@ -170,63 +164,6 @@ input[type="radio"] {
 
 /* Ajustes para diferentes tipos de pantalla (tamaño).  */
 
-@media only screen and (min-width: 2560px) {
-    #questionBox .content {
-        font-size: 40px;
-    }
-
-    #gameButtonBox button {
-        font-size: 40px;
-        padding: 20px 40px;
-    }
-}
-
-@media only screen and (max-width: 1440px) {
-    #questionBox .content {
-        font-size: 16px;
-    }
-
-    #gameButtonBox button {
-        font-size: 14px;
-        padding: 15px 30px;
-    }
-}
-
-@media only screen and (max-width: 1024px) {
-    #questionBox .content {
-        font-size: 14px;
-    }
-
-    #gameButtonBox button {
-        font-size: 10px;
-        padding: 12px 20px;
-    }
-}
-
-@media only screen and (max-width:760px) {
-
-    h1 {
-        font-size: 38px;
-    }
-
-    .animation {
-        animation: fadeInAnimation 1s ease-in-out forwards;
-    }
-
-    #portraitBox {
-        display: none;
-    }
-
-    #questionBox {
-        border-left: 0;
-    }
-}
-
-@media only screen and (max-width:425px) {
-    h1 {
-        font-size: 28px;
-    }
-}
 
 /* Efectos personalizados */
 
