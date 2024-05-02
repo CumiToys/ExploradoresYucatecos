@@ -5,7 +5,9 @@ var currentQuestionIndex = 0;
 var quizz = [];
 
 async function loadGame() {
-    quizz = await loadDataFromFile('questions.json');
+    if(quizz.length == 0) {
+        quizz = await loadDataFromFile('questions.json');
+    }
     var questionBox = document.getElementById('questionBox');
     var questionBoxContent = document.getElementById('questionBoxContent');
 
@@ -17,15 +19,15 @@ async function loadGame() {
 }
 
 async function reloadGame() {
-    loadQuestion();
-    showPopup();
+    removePopup();
+    resetSettings();
 }
 
 function setActionEvents() {
     var radioInputs = document.querySelectorAll('.answerOption');
 
     radioInputs.forEach(function(radio) {
-        radio.addEventListener('change', function() {
+        radio.addEventListener('click', function() {
             handleOptionChange(this);
         });
     });
@@ -47,14 +49,17 @@ function generateRandomNumber(maxValue) {
     return Math.floor(Math.random() * maxValue);
 }
 
-function resetResultSettings() {
+function resetSettings() {
     var questionBox = document.getElementById('questionBox');
     var radioInputs = document.querySelectorAll('.answerOption');
+    var selectedOption = document.querySelector('input[class="answerOption"]:checked');
+    var label = selectedOption.parentNode;
 
-    setBackgroundColor(questionBox, 'white');
-    var questionResult = setQuestionResult('', 'white');
-    hide(questionResult);
+    hide(questionBox);
+    setBackgroundColor(label, 'white');
+    setTextColor(label, 'black');
     enableMany(radioInputs);
+    show(startGameButton);
 }
 
 function fillQuestionContent(content, questionIndex) {
@@ -73,21 +78,20 @@ function fillQuestionContent(content, questionIndex) {
 
 function checkAnswer(selectedOption) {
     var question = quizz[currentQuestionIndex];
-    var questionResult;
+    var label = selectedOption.parentNode;
 
     lockAnswer();
 
     if(selectedOption.value == question.rightAnswer){
-        setBackgroundColor(selectedOption.parentNode, '#0EB81B');
-        setTextColor(selectedOption.parentNode, 'white');
-        //questionResult = setQuestionResult(question.rightAnswerOutput, '#18ba69');
+        setBackgroundColor(label, '#0EB81B');
+        setTextColor(label, 'white');
+        showPopup(question.rightAnswerOutput);
     } else {
-        setBackgroundColor(selectedOption.parentNode, '#B80E0E');
-        setTextColor(selectedOption.parentNode, 'white');
-        //questionResult = setQuestionResult(question.wrongAnswerOutput, '#c42b2b');
+        setBackgroundColor(label, '#B80E0E');
+        setTextColor(label, 'white');
+        showPopup(question.wrongAnswerOutput);
     }
 
-    //show(questionResult);
 }
 
 function setQuestionResult(result, color) {
@@ -152,4 +156,30 @@ async function loadDataFromFile(filename) {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
+}
+
+function showPopup(text) {
+    var popupContainer = document.createElement("div");
+    popupContainer.className = "popup-container";
+    var reloadButton = document.createElement("button");
+    reloadButton.innerHTML = `<span class=reload>&#x21bb;</span> Volver al inicio`;
+    reloadButton.addEventListener('click', reloadGame);
+    
+    popupContainer.innerHTML = `<p>${text}</p>`;
+    popupContainer.appendChild(reloadButton);
+
+    document.body.appendChild(popupContainer);
+
+    popupContainer.classList.add("fade-in");
+    popupContainer.style.display = "block";
+}
+
+function removePopup() {
+    var popupContainers = document.querySelectorAll('.popup-container');
+
+    console.log(popupContainers.length);
+
+    popupContainers.forEach(popup => {
+        document.body.removeChild(popup);
+    });
 }

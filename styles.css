@@ -8,33 +8,36 @@ body {
     background-size: cover;
 }
 
+.navbar {
+    text-align: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 80vh;
 }
 
 .popup-container {
     position: fixed;
     border-radius: 10px;
-    top: 20px;
-    right: 20px;
-    background-color: rgb(238, 206, 137, 0.9);
-    padding: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: none
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 h1 {
-    text-transform: uppercase;
-    text-align: center;
     font-size: 48px;
     -webkit-text-stroke: 2px #8b4513; /* Borde marrón oscuro */
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
     color: #8b4513;
-    position: relative;
+    position: sticky;
+    margin: 0 auto;
     display: inline-block; /* Hacer que el contorno se ajuste al tamaño del texto */
 }
 
@@ -44,6 +47,7 @@ button {
     padding: 15px 30px;
     border: none;
     border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -64,7 +68,7 @@ button:hover {
 
 #questionBox .content {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     padding: 0.5rem;
     height: 100%;
@@ -76,6 +80,7 @@ button:hover {
     line-height: 1.5;
     text-align: justify;
     background-color: white;
+    box-shadow: 3px 3px 3px gray;
     border-radius: 5px;
     padding: 10px;
 }
@@ -89,6 +94,7 @@ button:hover {
     display: flex;
     box-sizing: border-box;
     background-color: white;
+    box-shadow: 0 5px gray;
     border-radius: 10px;
     padding: 12px 5px;
     margin: 15px 0;
@@ -119,22 +125,9 @@ input[type="radio"] {
     text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
 }
 
-.slide {
-    animation: growAnimation 1.5s ease forwards;
-}
-
 .fade-in {
     opacity: 0;
-    animation: fadeInAnimation 1.5s ease-in-out forwards;
-}
-
-.fade-away {
-    opacity: 1;
-    animation: fadeAwayAnimation 1.5s ease-in-out forwards;
-}
-
-.animation {
-    animation: growAnimation 1.5s ease forwards;
+    animation: fadeInAnimation 1s ease-in-out forwards;
 }
 
 .hidden {
@@ -210,34 +203,12 @@ input[type="radio"] {
 
 /* Efectos personalizados */
 
-@keyframes growAnimation {
-    from {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
-    to {
-        width: 100%;
-        height: auto;
-        opacity: 1;
-    }
-}
-
 @keyframes fadeInAnimation {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes fadeAwayAnimation {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
     }
 }
 
