@@ -101,7 +101,6 @@ function checkAnswer(selectedOption) {
     }
 
     show(popup);
-
 }
 
 function setQuestionResult(result, color) {

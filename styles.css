@@ -130,15 +130,6 @@ input[type="radio"] {
     cursor: pointer;
 }
 
-#questionNumber {
-    font-size: 72px;
-    margin: 0;
-    color: #8b4513;
-    padding: 20px;
-    border-radius: 10px;
-    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff; /* Sombras para suavizar el borde */
-}
-
 .popup-container {
     position: fixed;
     text-align: center;
@@ -172,6 +163,172 @@ input[type="radio"] {
 
 /* Ajustes para diferentes tipos de pantalla (tamaño).  */
 
+@media only screen and (min-width: 768px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    #questionBox .content {
+        width: 80%;
+    }
+
+    #optionBox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-rows: repeat(2, auto); /* 2 filas */
+        gap: 10px;
+    }
+
+    #questionText {
+        font-size: 25px;
+    }
+
+    #optionBox label {
+        font-size: 25px;
+        margin: 0;
+    }
+
+    #reloadButton {
+        font-size: 25px;
+    }
+
+    .popup-container {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    h1 {
+        font-size: 55px;
+    }
+
+    #questionBox .content {
+        width: 80%;
+    }
+
+    .button {
+        font-size: 80px;
+        width: 50%;
+    }
+
+    #portrait {
+        width: 50%;
+    }
+
+    #optionBox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-rows: repeat(2, auto); /* 2 filas */
+        gap: 15px;
+    }
+
+    #questionText {
+        font-size: 30px;
+    }
+
+    #optionBox label {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    #reloadButton {
+        font-size: 30px;
+    }
+
+    .popup-container {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+
+    h1 {
+        font-size: 75px;
+    }
+
+    #questionBox .content {
+        width: 80%;
+    }
+
+    .button {
+        font-size: 80px;
+        width: 50%;
+    }
+
+    #portrait {
+        width: 50%;
+    }
+
+    #optionBox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-rows: repeat(2, auto); /* 2 filas */
+        gap: 20px;
+    }
+
+    #questionText {
+        font-size: 40px;
+    }
+
+    #optionBox label {
+        font-size: 40px;
+        margin: 0;
+    }
+
+    #reloadButton {
+        font-size: 40px;
+    }
+
+    .popup-container {
+        font-size: 40px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+
+    h1 {
+        font-size: 135px;
+    }
+
+    .button {
+        font-size: 80px;
+        width: 50%;
+    }
+
+    #portrait {
+        width: 50%;
+    }
+
+    #questionBox .content {
+        width: 80%;
+    }
+
+    #optionBox {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-rows: repeat(2, auto); /* 2 filas */
+        gap: 30px;
+    }
+
+    #questionText {
+        font-size: 80px;
+    }
+
+    #optionBox label {
+        font-size: 80px;
+        margin: 0;
+    }
+
+    #reloadButton {
+        font-size: 80px;
+    }
+
+    .popup-container {
+        font-size: 80px;
+    }
+}
 
 /* Efectos personalizados */
 
